@@ -1,18 +1,6 @@
 <template>
   <q-page padding>
-    <div class="q-pa-md">
-      <q-toolbar class="bg-indigo-8 text-white" style="width: 600px">
-      <q-btn flat round dense icon="mic" />
-      <q-toolbar-title>Voice Caster home</q-toolbar-title>
-      <q-space />
-      <q-btn flat round dense icon="speaker" />
-    </q-toolbar>
-
-      <div class="row no-wrap items-center q-mt-md q-pa-sm bg-grey-3 rounded-borders">
-        <q-space />
-        <div>VoiceCaster <q-badge>v1.0.0</q-badge></div>
-      </div>
-
+    <div class="q-pt-md">
       <div class="q-pa-md">
         <q-card flat class="my-card">
           <q-tabs v-model="tab" class="text-purple ">
@@ -24,40 +12,32 @@
 
           <q-tab-panels v-model="tab" animated>
             <q-tab-panel name="one">
-              Broadcaster
+              Broadcasterds
+              <q-card>
+                <TableClient/>
+              </q-card>
+                  
             </q-tab-panel>
 
             <q-tab-panel name="two">
-              <div class="q-pa-md">
+              <div class="q-pa-sm">
                 <q-card class="my-card">
-                  <q-card-section>
-                    <div class="text-h6">Client/s</div>
-                  </q-card-section>
+                  <q-table
+                    title="Client/s"
+                    :data="data"
+                    :columns="columns"
+                    row-key="client"    
+                    selection="multiple"
+                    :selected.sync="selected"
+                  >
+                    <template v-slot:header-selection="scope">
+                      <q-toggle v-model="scope.selected" />
+                    </template>
 
-                  <q-markup-table flat>
-                    <thead>
-                      <tr>
-                        <th class="text-left">ID</th>
-                        <th class="text-left">Colleges/Offices</th>
-                        <th class="text-right">Status</th>
-                        <th class="text-right">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="text-left">001</td>
-                        <td class="text-left">
-                          College Of Information Technology
-                        </td>
-                        <td class="text-left">Active</td>
-                      </tr>
-                      <tr>
-                        <td class="text-left">002</td>
-                        <td class="text-left">Office Of The President</td>
-                        <td class="text-left">Active</td>
-                      </tr>
-                    </tbody>
-                  </q-markup-table>
+                    <template v-slot:body-selection="scope">
+                      <q-toggle v-model="scope.selected" />
+                    </template>
+                  </q-table>
                 </q-card>
               </div>
             </q-tab-panel>
@@ -69,11 +49,43 @@
 </template>
 
 <script>
+import TableClient from 'components/TableClient.vue'
 export default {
-  // name: 'Popup',
+  name: 'Popup',
+  components: {TableClient},
   data() {
     return {
-      tab: "one"
+      tab: "one",
+      selected: [],
+      columns: [
+        {
+          name: 'client',
+          required: true,
+          label: 'Colleges/Offices',
+          align: 'left',
+          field: 'client',
+          sortable: true
+        },
+        { name: 'status', align: 'left', label: 'Status', field: 'status', sortable: true },
+        { name: 'id', label: 'Code Number', field: 'id', sortable: true, align: 'left' },
+      ],
+      data: [
+        {
+          client: 'College of Information Technology',
+          statdsus: 'Online',
+          id: 1001
+        },
+        {
+          client: 'College of Education',
+          status: 'Online',
+          id: 1002
+        },
+        {
+          client: 'Office of the President',
+          status: 'Online',
+          id: 1003
+        }
+      ]
     };
   }
 };
@@ -82,5 +94,5 @@ export default {
 <style lang="sass" scoped>
 .my-card
   width: 100%
-  max-width: 500px
+  max-width: 600px
 </style>
