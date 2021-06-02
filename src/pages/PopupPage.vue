@@ -12,34 +12,12 @@
 
           <q-tab-panels v-model="tab" animated>
             <q-tab-panel name="one">
-              Broadcasterds
-              <q-card>
-                <TableClient/>
-              </q-card>
-                  
+              Broadcaster
+                <TableClient/>               
             </q-tab-panel>
 
             <q-tab-panel name="two">
-              <div class="q-pa-sm">
-                <q-card class="my-card">
-                  <q-table
-                    title="Client/s"
-                    :data="data"
-                    :columns="columns"
-                    row-key="client"    
-                    selection="multiple"
-                    :selected.sync="selected"
-                  >
-                    <template v-slot:header-selection="scope">
-                      <q-toggle v-model="scope.selected" />
-                    </template>
-
-                    <template v-slot:body-selection="scope">
-                      <q-toggle v-model="scope.selected" />
-                    </template>
-                  </q-table>
-                </q-card>
-              </div>
+              <TableClient/>     
             </q-tab-panel>
           </q-tab-panels>
         </q-card>
@@ -56,36 +34,6 @@ export default {
   data() {
     return {
       tab: "one",
-      selected: [],
-      columns: [
-        {
-          name: 'client',
-          required: true,
-          label: 'Colleges/Offices',
-          align: 'left',
-          field: 'client',
-          sortable: true
-        },
-        { name: 'status', align: 'left', label: 'Status', field: 'status', sortable: true },
-        { name: 'id', label: 'Code Number', field: 'id', sortable: true, align: 'left' },
-      ],
-      data: [
-        {
-          client: 'College of Information Technology',
-          statdsus: 'Online',
-          id: 1001
-        },
-        {
-          client: 'College of Education',
-          status: 'Online',
-          id: 1002
-        },
-        {
-          client: 'Office of the President',
-          status: 'Online',
-          id: 1003
-        }
-      ]
     };
   }
 };
