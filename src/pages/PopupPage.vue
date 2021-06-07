@@ -34,13 +34,6 @@
 <script>
 import TableClient from "components/TableClient.vue";
 
-const supportedTypes = [
-  'audio/aac',
-  'audio/ogg',
-  'audio/wav',
-  'audio/webm'
-]
-
 export default {
   name: "Popup",
   components: { TableClient },
