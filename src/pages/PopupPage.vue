@@ -44,15 +44,7 @@ const supportedTypes = [
 export default {
   name: "Popup",
   components: { TableClient },
-
-  // mixins: [ElementMixin],
-  props: {
-    mimeType: {
-      type: String,
-      default: 'audio/webm',
-      validator: v => supportedTypes.includes(v)
-    }
-  },
+  
   data() {  
     return {
       tab: "one"
