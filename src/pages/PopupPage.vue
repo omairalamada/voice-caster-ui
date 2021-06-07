@@ -4,14 +4,15 @@
 
         <q-card flat class="my-card">
           <q-tabs 
+            dense
             v-model="tab" 
-            class="text-grey-14" 
+            class="text-grey-10" 
             narrow-indicator 
             active-color="blue-9" 
             indicator-color="blue-9"
             >
-            <q-tab icon="mic" label="Broadcast" name="one" />
-            <q-tab icon="people" label="Manage Client" name="two" />
+            <q-tab icon="keyboard_voice" label="Broadcast" name="one" />
+            <q-tab icon="manage_accounts" label="Manage Client" name="two" />
           </q-tabs>
 
           <q-separator />
