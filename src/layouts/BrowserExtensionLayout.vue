@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header flat>
-      <q-toolbar class="text-white bg-indigo-8">
+      <q-toolbar class="text-white bg-blue-9">
         <q-btn flat round dense icon="mic" />
         <q-toolbar-title>Voice Caster</q-toolbar-title>
         <q-space />
