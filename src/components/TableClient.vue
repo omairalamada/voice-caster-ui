@@ -68,7 +68,7 @@ export default {
     this.clientList = this.data;
   },
   computed: {
-      ...mapState('broadcaster', ['data', 'clientInfo'])
+      ...mapState('broadcaster', ['data'])
   },
   methods: {
     //   ...mapActions('broadcaster', []),

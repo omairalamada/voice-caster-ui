@@ -15,7 +15,7 @@
               <div class="q-pa-md">
                 <q-card class="my-card" flat>
                   <q-card-section class="text-center">
-                    <q-btn size="35px" round color="info" icon="mic" />
+                    <q-btn class="shadow-13" size="35px" round color="red" icon="mic"/>
                   </q-card-section>
                 </q-card>
               </div>
@@ -33,14 +33,35 @@
 
 <script>
 import TableClient from "components/TableClient.vue";
+
+const supportedTypes = [
+  'audio/aac',
+  'audio/ogg',
+  'audio/wav',
+  'audio/webm'
+]
+
 export default {
   name: "Popup",
   components: { TableClient },
-  data() {
+
+  // mixins: [ElementMixin],
+  props: {
+    mimeType: {
+      type: String,
+      default: 'audio/webm',
+      validator: v => supportedTypes.includes(v)
+    }
+  },
+  data() {  
     return {
       tab: "one"
     };
-  }
+  },
+  methods: {
+    
+  },
+
 };
 </script>
 
