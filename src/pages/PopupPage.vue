@@ -1,12 +1,5 @@
 <template>
   <q-page padding style="width: 600px">
-    <q-toolbar class="text-primary">
-      <q-btn flat round dense icon="speaker" />
-      <q-toolbar-title>
-        Toolbar
-      </q-toolbar-title>
-      <q-btn flat round dense icon="more_vert" />
-    </q-toolbar>
     <div class="q-pa-md">
         <q-card flat class="my-card">
           <q-tabs 
@@ -25,7 +18,16 @@
 
           <q-tab-panels v-model="tab" animated >
             <q-tab-panel name="one">
-              <div class="q-pa-md">
+              <div class="q-pt-xs">
+                <q-toolbar class="text-primary">
+                  <q-icon dense color="blue-9" size="30px" name="speaker" />
+                  <q-toolbar-title v-if="isMicOn">
+                    <q-badge text-color="black" color="yellow-11" :label="status_message.status_on_air" />
+                  </q-toolbar-title>
+                  <q-toolbar-title v-else>
+                    <q-badge color="red" :label="status_message.mic_off" />
+                  </q-toolbar-title>
+                </q-toolbar>
                 <q-card class="my-card" flat>
                   <q-card-section v-if="isMicOn" class="text-center">
                     <q-btn 
@@ -72,7 +74,13 @@ export default {
   data() {  
     return {
       tab: "one",
-      isMicOn: false
+      isMicOn: false,
+      status_message: {
+        mic_on: 'Press to Start Announce',
+        btn_stop: 'STOP',
+        mic_off: 'Muted',
+        status_on_air: 'On-Air' 
+      }
     };
   },
   methods: {
