@@ -1,7 +1,13 @@
 <template>
   <q-page padding style="width: 600px">
+    <q-toolbar class="text-primary">
+      <q-btn flat round dense icon="speaker" />
+      <q-toolbar-title>
+        Toolbar
+      </q-toolbar-title>
+      <q-btn flat round dense icon="more_vert" />
+    </q-toolbar>
     <div class="q-pa-md">
-
         <q-card flat class="my-card">
           <q-tabs 
             dense
