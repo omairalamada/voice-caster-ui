@@ -21,8 +21,26 @@
             <q-tab-panel name="one">
               <div class="q-pa-md">
                 <q-card class="my-card" flat>
-                  <q-card-section class="text-center">
-                    <q-btn class="shadow-13" size="35px" round color="red" icon="mic"/>
+                  <q-card-section v-if="isMicOn" class="text-center">
+                    <q-btn 
+                    class="shadow-20" 
+                    size="35px" 
+                    round 
+                    color="red-6" 
+                    icon="mic"
+                    @click="stopAnnounce()"
+                    />
+                  </q-card-section>
+
+                  <q-card-section v-else class="text-center">
+                    <q-btn 
+                    class="shadow-1" 
+                    size="35px" 
+                    round 
+                    color="green-6" 
+                    icon="mic_off"
+                    @click="startAnnounce()"
+                    />
                   </q-card-section>
                 </q-card>
               </div>
@@ -47,11 +65,17 @@ export default {
   
   data() {  
     return {
-      tab: "one"
+      tab: "one",
+      isMicOn: false
     };
   },
   methods: {
-    
+    startAnnounce() {
+      return this.isMicOn = true;
+    },
+    stopAnnounce() {
+      return this.isMicOn = false;
+    }
   },
 
 };
