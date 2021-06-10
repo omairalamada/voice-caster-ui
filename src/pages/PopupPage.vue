@@ -1,7 +1,6 @@
 <template>
   <q-page padding style="width: 600px">
     <div class="q-pa-md">
-
         <q-card flat class="my-card">
           <q-tabs 
             dense
@@ -19,10 +18,37 @@
 
           <q-tab-panels v-model="tab" animated >
             <q-tab-panel name="one">
-              <div class="q-pa-md">
+              <div class="q-pt-xs">
+                <q-toolbar class="text-primary">
+                  <q-icon dense color="blue-9" size="30px" name="speaker" />
+                  <q-toolbar-title v-if="isMicOn">
+                    <q-badge text-color="black" color="yellow-11" :label="status_message.status_on_air" />
+                  </q-toolbar-title>
+                  <q-toolbar-title v-else>
+                    <q-badge color="red" :label="status_message.mic_off" />
+                  </q-toolbar-title>
+                </q-toolbar>
                 <q-card class="my-card" flat>
-                  <q-card-section class="text-center">
-                    <q-btn class="shadow-13" size="35px" round color="red" icon="mic"/>
+                  <q-card-section v-if="isMicOn" class="text-center">
+                    <q-btn 
+                    class="shadow-20" 
+                    size="35px" 
+                    round 
+                    color="red-6" 
+                    icon="mic"
+                    @click="stopAnnounce()"
+                    />
+                  </q-card-section>
+
+                  <q-card-section v-else class="text-center">
+                    <q-btn 
+                    class="shadow-1" 
+                    size="35px" 
+                    round 
+                    color="green-6" 
+                    icon="mic_off"
+                    @click="startAnnounce()"
+                    />
                   </q-card-section>
                 </q-card>
               </div>
@@ -47,11 +73,23 @@ export default {
   
   data() {  
     return {
-      tab: "one"
+      tab: "one",
+      isMicOn: false,
+      status_message: {
+        mic_on: 'Press to Start Announce',
+        btn_stop: 'STOP',
+        mic_off: 'Muted',
+        status_on_air: 'On-Air' 
+      }
     };
   },
   methods: {
-    
+    startAnnounce() {
+      return this.isMicOn = true;
+    },
+    stopAnnounce() {
+      return this.isMicOn = false;
+    }
   },
 
 };
