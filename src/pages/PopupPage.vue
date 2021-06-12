@@ -31,7 +31,7 @@
                 <q-card class="my-card" flat>
                   <q-card-section v-if="isMicOn" class="text-center">
                     <q-btn 
-                    class="shadow-20" 
+                    class="shadow-16" 
                     size="35px" 
                     round 
                     color="red-6" 
