@@ -50,6 +50,17 @@
                     @click="startAnnounce()"
                     />
                   </q-card-section>
+                  <q-card-section>
+                    <q-btn
+                      no-caps
+                      outline
+                      color="blue-9"
+                      icon="mic"
+                      label="Test Mic"
+                      style="width: 140px"
+                    >
+                    </q-btn>
+                  </q-card-section>
                 </q-card>
               </div>
             </q-tab-panel>
