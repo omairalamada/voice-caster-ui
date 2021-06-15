@@ -61,6 +61,7 @@
                       icon="mic"
                       label="Test Mic"
                       class="full-width"
+                      @click="testMic()"
                     >
                       <template v-slot:loading>
                         <q-spinner-bars  class="on-left"/>
@@ -98,7 +99,9 @@ export default {
         btn_stop: 'STOP',
         mic_off: 'Muted',
         status_on_air: 'On-Air' 
-      }
+      },
+      record_loading: false,
+      audioChunks: []
     };
   },
   methods: {
@@ -107,6 +110,27 @@ export default {
     },
     stopAnnounce() {
       return this.isMicOn = false;
+    },
+    async testMic() {
+       await navigator.mediaDevices.getUserMedia({audio: true})
+       .then(stream => {
+         const mediaRecorder = new MediaRecorder(stream);
+         mediaRecorder.start();
+         this['record_loading'] = true;
+         mediaRecorder.addEventListener("dataavailable", event => {
+          this.audioChunks.push(event.data);
+         });
+         mediaRecorder.addEventListener("stop", () => {
+           const audioBlob = new Blob(this.audioChunks);
+           const audioURL = URL.createObjectURL(audioBlob);
+           const audio = new Audio(audioURL);
+           audio.play();
+         })
+         setTimeout(() => {
+           mediaRecorder.stop();  
+            this['record_loading'] = false;
+         }, 3000);
+       })
     }
   },
 
