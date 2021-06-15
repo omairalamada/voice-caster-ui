@@ -50,6 +50,7 @@
                     @click="startAnnounce()"
                     />
                   </q-card-section>
+                  <q-separator/>
                   <q-card-section>
                     <div class="text-subtitle2 text-blue-grey-9 q-pb-sm">Microphone: </div>
                     <q-btn
