@@ -51,6 +51,7 @@
                     />
                   </q-card-section>
                   <q-card-section>
+                    <div class="text-subtitle2 text-blue-grey-9 q-pb-sm">Microphone: </div>
                     <q-btn
                       no-caps
                       outline
