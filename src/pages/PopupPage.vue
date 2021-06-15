@@ -60,6 +60,7 @@
                       icon="mic"
                       label="Test Mic"
                       style="width: 140px"
+                      class="full-width"
                     >
                     </q-btn>
                   </q-card-section>
