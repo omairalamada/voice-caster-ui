@@ -48,7 +48,8 @@
                     color="green-6" 
                     icon="mic_off"
                     @click="startAnnounce()"
-                    />
+                    >
+                    </q-btn>
                   </q-card-section>
                   <q-separator/>
                   <q-card-section>
@@ -59,9 +60,12 @@
                       color="blue-9"
                       icon="mic"
                       label="Test Mic"
-                      style="width: 140px"
                       class="full-width"
                     >
+                      <template v-slot:loading>
+                        <q-spinner-bars  class="on-left"/>
+                        Recording...
+                      </template>
                     </q-btn>
                   </q-card-section>
                 </q-card>
